@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import './style.css';
 import DigitButton from './digit';
 import OperationButton from './Operation';
@@ -35,6 +35,7 @@ function reducer(state, { type, payload}) {
 
         
       }
+      
       if(state.currentOpernad==null)
       return{
         ...state,
@@ -78,6 +79,9 @@ function reducer(state, { type, payload}) {
           ...state,
           currentOpernad: state.currentOpernad.slice(0, -1),
         }
+        default:
+        break;
+      
   }
 }
 const INTEGER_FORMATTER = new Intl.NumberFormat("en-us",{
@@ -108,8 +112,12 @@ switch (operation) {
   case "/":
     computation = preview / current
     break
+
+    default:
+      break;
 }
 return computation.toString()
+ 
 
 }
 function formatOperand(operand){
